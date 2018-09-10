@@ -1,0 +1,10 @@
+[
+  "test_wallet.py::test_default_initial_amount",
+  "test_wallet.py::test_setting_initial_amount",
+  "test_wallet.py::test_wallet_add_cash",
+  "test_wallet.py::test_wallet_spend_cash",
+  "test_wallet.py::test_wallet_spend_cash_raises_exception_on_insufficient_amount",
+  "test_wallet.py::test_transactions[30-10-20]",
+  "test_wallet.py::test_transactions[20-2-18]",
+  "test_wallet.py::test_transactions[10-5-5]"
+]
