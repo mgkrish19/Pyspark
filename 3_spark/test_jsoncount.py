@@ -1,6 +1,6 @@
 """ tests the jsoncount function
 
-we need to create a HiveContext fiture so that we can read in json files using jsonRDD function
+we need to create a HiveContext fixture so that we can read in json files
 """
 
 import pytest 
