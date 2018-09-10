@@ -1,1 +1,2 @@
-The very basic
+* basic syntax
+* handle exception
