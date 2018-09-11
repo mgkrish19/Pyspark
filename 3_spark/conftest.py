@@ -54,21 +54,21 @@ def spark_context(request):
     return sc 
 
 
-# @pytest.fixture(scope='session')
-# def hive_context(spark_context):
-#     """ the fixture to interface with hive context
+@pytest.fixture(scope='session')
+def hive_context(spark_context):
+    """ the fixture to interface with hive context
         
-#     Decorators:
-#         pytest.fixture -- on a session scale
+    Decorators:
+        pytest.fixture -- on a session scale
     
-#     Arguments:
-#         spark_context {SparkContext} -- enable proper init. from SparkContext
+    Arguments:
+        spark_context {SparkContext} -- enable proper init. from SparkContext
     
-#     Returns: 
-#         hc -- the constructed HiveContext object
-#     """
-#     hc = HiveContext(spark_context)
-#     return hc 
+    Returns: 
+        hc -- the constructed HiveContext object
+    """
+    hc = HiveContext(spark_context)
+    return hc 
 
 
 # @pytest.fixture(scope='session')
