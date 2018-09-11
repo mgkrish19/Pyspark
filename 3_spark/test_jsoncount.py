@@ -32,6 +32,5 @@ def test_do_json_count(spark_context, hive_context):
     assert 1 == jsoncount.do_json_counts(df, target_name = 'jane')
     assert 0 == jsoncount.do_json_counts(df, target_name = 'alice')
 
-
-
+    print ("test_do_json_count finished with SUCCESS")
 

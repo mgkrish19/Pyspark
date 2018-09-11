@@ -35,6 +35,7 @@ def test_do_word_counts(spark_context):
 
     assert expected_results == results
 
+    print ("test_do_word_counts finished with SUCCESS")
 
 
 

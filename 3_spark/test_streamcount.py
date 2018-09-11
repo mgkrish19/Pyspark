@@ -74,3 +74,6 @@ def test_stream_word_count(spark_context, stream_context):
     ]
 
     assert expected_results == results
+    
+    print ("test_stream_word_count finished with SUCCESS")
+
