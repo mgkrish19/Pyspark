@@ -70,9 +70,9 @@ def hive_context(spark_context):
     """
 
     print ('pyspark version', pyspark.__version__)
-    if pyspark.__version__ == '2.3.1':
+    if pyspark.__version__[:5] == '2.3.1':
         hc = HiveContext(spark_context)
-    elif pyspark.__version__ == '2.1.1': # for Docker image makotonagai/pyspark-pytest
+    elif pyspark.__version__[:5] == '2.1.1': # for Docker image makotonagai/pyspark-pytest
         hc = SparkSession.builder \
                             .master("local[2]") \
                             .appName("Word Count") \
