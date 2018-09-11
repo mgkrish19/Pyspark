@@ -12,11 +12,12 @@ This module includes pytest fixtures and util. functions that can be reused acro
 import logging
 import pytest
 
+import pyspark
 from pyspark import SparkConf
 from pyspark import SparkContext
 from pyspark import HiveContext
-from pyspark.streaming import StreamingContext
-
+# from pyspark.streaming import StreamingContext
+from pyspark.sql import SparkSession
 
 def quiet_py4j():
     """ turn down spark logging for the test context
@@ -67,7 +68,16 @@ def hive_context(spark_context):
     Returns: 
         hc -- the constructed HiveContext object
     """
-    hc = HiveContext(spark_context)
+
+    if pyspark.__version__ == '2.3.1':
+        hc = HiveContext(spark_context)
+    elif pyspark.__version__ == '2.1.1': # for Docker image makotonagai/pyspark-pytest
+        hc = SparkSession.builder \
+                            .master("local[2]") \
+                            .appName("Word Count") \
+                            .config("spark.some.config.option", "some-value") \
+                            .getOrCreate() \
+                            .enableHiveSupport()
     return hc 
 
 
