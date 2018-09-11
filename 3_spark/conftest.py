@@ -76,7 +76,6 @@ def hive_context(spark_context):
         hc = SparkSession.builder.enableHiveSupport() \
                             .master("local[2]") \
                             .appName("Word Count") \
-                            .config("spark.some.config.option", "some-value") \
                             .getOrCreate()
                             
     return hc 
