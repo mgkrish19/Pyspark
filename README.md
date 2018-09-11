@@ -1,5 +1,5 @@
-# pyTest_WS
-This is the workspace for keeping track of my scripts to learn how pyTest works. Check the following folders. Start with 1.
+# pyspark_pytest
+This is the workspace for keeping track of my scripts to learn how pytest works. Check the following folders. Start with 1.
 
 ## 1_calculator
 The very basic syntax and show how pytest works, includes the basic naming convention and how to properly handle Exception testing
