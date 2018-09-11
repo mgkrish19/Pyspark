@@ -76,7 +76,6 @@ def hive_context(spark_context):
         hc = SparkSession \
             .builder \
             .appName("Python Spark SQL Hive integration example") \
-            .config("spark.sql.warehouse.dir", 'warehouse_location') \
             .enableHiveSupport() \
             .getOrCreate()
 
