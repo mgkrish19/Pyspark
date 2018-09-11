@@ -69,6 +69,7 @@ def hive_context(spark_context):
         hc -- the constructed HiveContext object
     """
 
+    print ('pyspark version', pyspark.__version__)
     if pyspark.__version__ == '2.3.1':
         hc = HiveContext(spark_context)
     elif pyspark.__version__ == '2.1.1': # for Docker image makotonagai/pyspark-pytest
