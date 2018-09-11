@@ -73,11 +73,13 @@ def hive_context(spark_context):
     if pyspark.__version__[:5] == '2.3.1':
         hc = HiveContext(spark_context)
     elif pyspark.__version__[:5] == '2.1.1': # for Docker image makotonagai/pyspark-pytest
-        hc = SparkSession.builder.enableHiveSupport() \
-                            .master("local[2]") \
-                            .appName("Word Count") \
-                            .getOrCreate()
-                            
+        hc = SparkSession \
+            .builder \
+            .appName("Python Spark SQL Hive integration example") \
+            .config("spark.sql.warehouse.dir", 'warehouse_location') \
+            .enableHiveSupport() \
+            .getOrCreate()
+
     return hc 
 
 
