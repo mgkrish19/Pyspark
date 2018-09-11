@@ -16,7 +16,7 @@ import pyspark
 from pyspark import SparkConf
 from pyspark import SparkContext
 from pyspark import HiveContext
-# from pyspark.streaming import StreamingContext
+from pyspark.streaming import StreamingContext
 from pyspark.sql import SparkSession
 
 def quiet_py4j():
@@ -55,31 +55,32 @@ def spark_context(request):
     return sc 
 
 
-@pytest.fixture(scope='session')
-def hive_context(spark_context):
-    """ the fixture to interface with hive context
+# @pytest.fixture(scope='session')
+# def hive_context(spark_context):
+#     """ the fixture to interface with hive context
         
-    Decorators:
-        pytest.fixture -- on a session scale
+#     Decorators:
+#         pytest.fixture -- on a session scale
     
-    Arguments:
-        spark_context {SparkContext} -- enable proper init. from SparkContext
+#     Arguments:
+#         spark_context {SparkContext} -- enable proper init. from SparkContext
     
-    Returns: 
-        hc -- the constructed HiveContext object
-    """
+#     Returns: 
+#         hc -- the constructed HiveContext object
+#     """
 
-    print ('pyspark version', pyspark.__version__)
-    if pyspark.__version__[:5] == '2.3.1':
-        hc = HiveContext(spark_context)
-    elif pyspark.__version__[:5] == '2.1.1': # for Docker image makotonagai/pyspark-pytest
-        hc = SparkSession \
-            .builder \
-            .appName("Python Spark SQL Hive integration example") \
-            .enableHiveSupport() \
-            .getOrCreate()
+#     print ('pyspark version', pyspark.__version__)
+#     if pyspark.__version__[:5] == '2.3.1':
+#         hc = HiveContext(spark_context)
+#     elif pyspark.__version__[:5] == '2.1.1': # for Docker image makotonagai/pyspark-pytest
+#         hc = SparkSession \
+#             .builder \
+#             .appName("Python Spark SQL Hive integration example") \
+#             .config("spark.sql.warehouse.dir", 'warehouse_location') \
+#             .enableHiveSupport() \
+#             .getOrCreate()
 
-    return hc 
+#     return hc 
 
 
 # @pytest.fixture(scope='session')

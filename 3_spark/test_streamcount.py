@@ -1,42 +1,42 @@
-""" test the steamcount.py functions
+# """ test the steamcount.py functions
 
-"""
+# """
 
-import pytest
-import time
-import streamcount
+# import pytest
+# import time
+# import streamcount
 
-def collect_helper(ssc, dstream, expected_length, block=True):
-    """
-    Collect each RDDs into the returned list.
-    This function is borrowed and modified from here:
-    https://github.com/holdenk/spark-testing-base
+# def collect_helper(ssc, dstream, expected_length, block=True):
+#     """
+#     Collect each RDDs into the returned list.
+#     This function is borrowed and modified from here:
+#     https://github.com/holdenk/spark-testing-base
     
-    :return: list with the collected items.
-    """
-    result = []
+#     :return: list with the collected items.
+#     """
+#     result = []
 
-    def get_output(_, rdd):
-        if rdd and len(result) < expected_length:
-            r = rdd.collect()
-            if r:
-                result.append(r)
+#     def get_output(_, rdd):
+#         if rdd and len(result) < expected_length:
+#             r = rdd.collect()
+#             if r:
+#                 result.append(r)
 
-    dstream.foreachRDD(get_output)
+#     dstream.foreachRDD(get_output)
 
-    if not block:
-        return result
+#     if not block:
+#         return result
 
-    ssc.start()
+#     ssc.start()
 
-    timeout = 2
-    start_time = time.time()
-    while len(result) < expected_length and time.time() - start_time < timeout:
-        time.sleep(0.01)
-    if len(result) < expected_length:
-        print("timeout after", timeout)
+#     timeout = 2
+#     start_time = time.time()
+#     while len(result) < expected_length and time.time() - start_time < timeout:
+#         time.sleep(0.01)
+#     if len(result) < expected_length:
+#         print("timeout after", timeout)
 
-    return result
+#     return result
 
 
 # @pytest.mark.usefixtures("spark_context", "stream_context")
