@@ -39,41 +39,41 @@ def collect_helper(ssc, dstream, expected_length, block=True):
     return result
 
 
-@pytest.mark.usefixtures("spark_context", "stream_context")
-def test_stream_word_count(spark_context, stream_context):
-    """ test the stream_word_count function
+# @pytest.mark.usefixtures("spark_context", "stream_context")
+# def test_stream_word_count(spark_context, stream_context):
+#     """ test the stream_word_count function
         
-    Decorators:
-        pytest.mark.usefixtures -- use 2 fixtures (session level)
+#     Decorators:
+#         pytest.mark.usefixtures -- use 2 fixtures (session level)
     
-    Arguments:
-        spark_context {SparkContext} -- interface to spark
-        stream_context {StreamingContext} -- interface to streaming
-    """
+#     Arguments:
+#         spark_context {SparkContext} -- interface to spark
+#         stream_context {StreamingContext} -- interface to streaming
+#     """
 
-    test_input = [
-        [
-            ' hello spark ',
-            ' hello again spark spark'
-        ],
-        # [
-        #     ' hello there again spark spark'
-        # ],   # order does not work well
+#     test_input = [
+#         [
+#             ' hello spark ',
+#             ' hello again spark spark'
+#         ],
+#         # [
+#         #     ' hello there again spark spark'
+#         # ],   # order does not work well
 
-    ]
+#     ]
 
-    input_rdds = [spark_context.parallelize(d, 1) for d in test_input]
-    input_stream = stream_context.queueStream(input_rdds)
+#     input_rdds = [spark_context.parallelize(d, 1) for d in test_input]
+#     input_stream = stream_context.queueStream(input_rdds)
 
-    tally = streamcount.do_streaming_word_counts(input_stream)
-    results = collect_helper(stream_context, tally, 2)
+#     tally = streamcount.do_streaming_word_counts(input_stream)
+#     results = collect_helper(stream_context, tally, 2)
 
-    expected_results = [
-        [('again', 1), ('hello', 2), ('spark', 3)],
-        # [('again', 1), ('hello', 1), ('spark', 2), ('there', 1)] # order is not correct, weird
-    ]
+#     expected_results = [
+#         [('again', 1), ('hello', 2), ('spark', 3)],
+#         # [('again', 1), ('hello', 1), ('spark', 2), ('there', 1)] # order is not correct, weird
+#     ]
 
-    assert expected_results == results
+#     assert expected_results == results
     
-    print ("test_stream_word_count finished with SUCCESS")
+#     print ("test_stream_word_count finished with SUCCESS")
 

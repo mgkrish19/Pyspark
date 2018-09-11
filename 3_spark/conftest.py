@@ -71,21 +71,21 @@ def spark_context(request):
 #     return hc 
 
 
-@pytest.fixture(scope='session')
-def stream_context(spark_context):
-    """ create fixture of spark streaming context
+# @pytest.fixture(scope='session')
+# def stream_context(spark_context):
+#     """ create fixture of spark streaming context
         
-    Decorators:
-        pytest.fixture -- session scope
+#     Decorators:
+#         pytest.fixture -- session scope
     
-    Arguments:
-        spark_context {SparkContext} -- interface to sc
+#     Arguments:
+#         spark_context {SparkContext} -- interface to sc
 
-    Returns:
-        ssc -- the construced StreamingContext object
-    """
-    ssc = StreamingContext(spark_context, 1)
-    return ssc 
+#     Returns:
+#         ssc -- the construced StreamingContext object
+#     """
+#     ssc = StreamingContext(spark_context, 1)
+#     return ssc 
 
 
 
